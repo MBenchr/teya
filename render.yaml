@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: teya
+    runtime: node
+    repo: https://github.com/MBenchr/teya
+    plan: starter
+    region: oregon
+    branch: main
+    autoDeploy: true
+    buildCommand: pnpm install --frozen-lockfile; pnpm run build
+    startCommand: pnpm run start
+    healthCheckPath: /
+    envVars:
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://teya.mohyi.com
+      - key: NEXT_PUBLIC_WHATSAPP_NUMBER
+        value: 33612345678
+      - key: NEXT_PUBLIC_INSTAGRAM_URL
+        value: https://www.instagram.com/teyabeauty
+      - key: NEXT_PUBLIC_FACEBOOK_URL
+        value: https://www.facebook.com/teyabeauty
+      - key: NEXT_PUBLIC_CONTACT_PHONE
+        value: 06 12 34 56 78
+      - key: NEXT_PUBLIC_CONTACT_EMAIL
+        value: contact@teyabeauty.fr
+      - key: NEXT_PUBLIC_CONTACT_ADDRESS_LINE1
+        value: 12 rue des Oliviers
+      - key: NEXT_PUBLIC_CONTACT_ADDRESS_LINE2
+        value: 34000 Montpellier
