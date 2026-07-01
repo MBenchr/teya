@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://teya.mohyi.com
+Sitemap: https://teya.mohyi.com/sitemap.xml
