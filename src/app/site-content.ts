@@ -56,12 +56,6 @@ export const navigationItems = [
   { label: "À propos", href: "#apropos" },
 ] as const;
 
-export const expertiseItems = [
-  { label: "Ongles", detail: "Manucure & Nail art" },
-  { label: "Esthétique", detail: "Soins du visage & du corps" },
-  { label: "Regard", detail: "Extensions de cils & sourcils" },
-] as const;
-
 export const serviceCards = [
   {
     title: "Manucure soignée",

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ContactDialog from "./contact-dialog";
+import MobileToolbar from "./mobile-toolbar";
 import {
   aboutCopy,
   contactAddressLine1,
@@ -8,7 +9,6 @@ import {
   contactEmail,
   contactLinks,
   contactPhone,
-  expertiseItems,
   footerLinks,
   navigationItems,
   serviceCards,
@@ -27,20 +27,10 @@ const iconMap = {
       <path d="M12 3c1.4 0 2.6 2 2.6 4.4 0 .7-.1 1.3-.3 1.9.6-.3 1.3-.4 2-.4 2.4 0 4.3 1.2 4.3 2.7s-1.9 2.7-4.3 2.7c-.7 0-1.4-.1-2-.4.2.6.3 1.2.3 1.9 0 2.4-1.2 4.4-2.6 4.4s-2.6-2-2.6-4.4c0-.7.1-1.3.3-1.9-.6.3-1.3.4-2 .4-2.4 0-4.3-1.2-4.3-2.7S5 8.9 7.4 8.9c.7 0 1.4.1 2 .4-.2-.6-.3-1.2-.3-1.9C9.1 5 10.6 3 12 3Zm0 7.1a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8Z" />
     </svg>
   ),
-  hand: (
-    <svg aria-hidden="true" viewBox="0 0 24 24">
-      <path d="M12 2.5a1 1 0 0 1 1 1V11h.7V3.8a1 1 0 1 1 2 0V12h.8V5.1a1 1 0 1 1 2 0V13h.5a1.5 1.5 0 0 1 1.5 1.5v1.2c0 3.8-2.5 5.8-5.6 5.8h-2.8c-2.8 0-4.8-1.9-5.3-4.4L6 11.7a1.2 1.2 0 1 1 2.3-.5l.7 2.7V6a1 1 0 1 1 2 0v5h1V3.5a1 1 0 0 1 1-1Z" />
-    </svg>
-  ),
   sun: (
     <svg aria-hidden="true" viewBox="0 0 24 24">
       <circle cx="12" cy="12" r="3.3" />
       <path d="M12 1.8v3.1M12 19.1v3.1M4.9 4.9l2.2 2.2M16.9 16.9l2.2 2.2M1.8 12h3.1M19.1 12h3.1M4.9 19.1l2.2-2.2M16.9 7.1l2.2-2.2" />
-    </svg>
-  ),
-  sparkle: (
-    <svg aria-hidden="true" viewBox="0 0 24 24">
-      <path d="m12 2.5 1.8 5.2 5.2 1.8-5.2 1.8L12 16.5l-1.8-5.2L5 9.5l5.2-1.8L12 2.5Zm6.1 12.2 1 2.8 2.8 1-2.8 1-1 2.8-1-2.8-2.8-1 2.8-1 1-2.8Z" />
     </svg>
   ),
   instagram: (
@@ -91,7 +81,16 @@ const serviceIconMap = {
       width={88}
     />
   ),
-  sparkle: iconMap.sparkle,
+  sparkle: (
+    <Image
+      alt=""
+      aria-hidden="true"
+      className="teya-service-card__asset teya-service-card__asset--sparkle"
+      height={88}
+      src="/icons/sparkle.png"
+      width={84}
+    />
+  ),
 } as const;
 
 export default function Home() {
@@ -156,8 +155,15 @@ export default function Home() {
 
             <ContactDialog
               buttonClassName="teya-button teya-button--solid teya-header__cta"
-              buttonLabel="Contacter"
+              buttonLabel="Prendre rendez-vous"
               mailtoHref={contactLinks.mailtoHref}
+              telHref={contactLinks.telHref}
+              whatsappHref={contactLinks.whatsappHref}
+            />
+
+            <MobileToolbar
+              mailtoHref={contactLinks.mailtoHref}
+              navigationItems={navigationItems}
               telHref={contactLinks.telHref}
               whatsappHref={contactLinks.whatsappHref}
             />
@@ -177,24 +183,12 @@ export default function Home() {
               </div>
               <p className="teya-hero__subtitle">{siteCopy.heroSubtitle}</p>
               <ContactDialog
-                buttonClassName="teya-button teya-button--solid"
-                buttonLabel="Contacter"
+                buttonClassName="teya-button teya-button--solid teya-button--ornament"
+                buttonLabel="Prendre rendez-vous"
                 mailtoHref={contactLinks.mailtoHref}
                 telHref={contactLinks.telHref}
                 whatsappHref={contactLinks.whatsappHref}
               />
-              <ul className="teya-expertise">
-                {expertiseItems.map((item, index) => {
-                  const icon =
-                    index === 0 ? iconMap.sparkles : index === 1 ? iconMap.flower : iconMap.hand;
-                  return (
-                    <li className="teya-expertise__item" key={item.label}>
-                      <span className="teya-expertise__icon">{icon}</span>
-                      <span className="teya-expertise__label">{item.label}</span>
-                    </li>
-                  );
-                })}
-              </ul>
             </div>
 
             <div className="teya-hero__visual">
@@ -210,7 +204,20 @@ export default function Home() {
                 />
               </div>
               <div aria-hidden="true" className="teya-hero__pattern">
-                <Image alt="" className="teya-hero__pattern-image" height={1350} src="/patterns/mosaic-vertical-strip.png" width={1080} />
+                <Image
+                  alt=""
+                  className="teya-hero__pattern-image teya-hero__pattern-image--desktop"
+                  height={1920}
+                  src="/patterns/mosaic-vertical-strip.png"
+                  width={1080}
+                />
+                <Image
+                  alt=""
+                  className="teya-hero__pattern-image teya-hero__pattern-image--mobile"
+                  height={1080}
+                  src="/patterns/mosaic-horizontal.png"
+                  width={1920}
+                />
               </div>
             </div>
           </div>
@@ -233,7 +240,7 @@ export default function Home() {
               ))}
             </div>
             <div className="teya-section__cta">
-              <a className="teya-button teya-button--solid" href="#apropos">
+              <a className="teya-button teya-button--solid teya-button--ornament" href="#apropos">
                 Voir les prestations
               </a>
             </div>
@@ -265,7 +272,7 @@ export default function Home() {
                 ))}
               </div>
               <ContactDialog
-                buttonClassName="teya-button teya-button--solid"
+                buttonClassName="teya-button teya-button--solid teya-button--ornament"
                 buttonLabel="Découvrir l’univers"
                 mailtoHref={contactLinks.mailtoHref}
                 telHref={contactLinks.telHref}
@@ -292,11 +299,14 @@ export default function Home() {
                 "/images/gallery-5.png",
               ].map((src, index) => (
                 <figure className="teya-gallery__card" key={src}>
-                  <Image
+                  {/* Static export needs immediate gallery rendering below the fold. */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     alt={`Création TEYA Beauty ${index + 1}`}
                     className="teya-gallery__image"
+                    decoding="async"
                     height={1350}
-                    sizes="(max-width: 768px) 50vw, 20vw"
+                    loading="eager"
                     src={src}
                     width={1080}
                   />
@@ -320,7 +330,6 @@ export default function Home() {
           <div className="teya-section__inner teya-footer__grid">
             <div className="teya-footer__brand">
               <Image alt="Logo TEYA Beauty" className="teya-footer__logo" height={160} src="/brand/logo-full.png" width={190} />
-              <p className="teya-footer__tagline">Ongles • Esthétique • Regard</p>
             </div>
 
             <div className="teya-footer__column">

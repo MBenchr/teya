@@ -125,6 +125,10 @@ svg {
   gap: 24px;
 }
 
+.teya-mobile-toolbar {
+  display: none;
+}
+
 .teya-logo-link {
   justify-self: start;
 }
@@ -193,6 +197,18 @@ svg {
 
 .teya-button--solid:hover {
   box-shadow: 0 22px 42px rgba(21, 63, 52, 0.22);
+}
+
+.teya-button--ornament {
+  gap: 12px;
+}
+
+.teya-button--ornament::after {
+  content: "";
+  width: 18px;
+  height: 10px;
+  flex: 0 0 auto;
+  background: url("/icons/sunburst.png") center / contain no-repeat;
 }
 
 .teya-button--ghost {
@@ -270,51 +286,6 @@ svg {
   text-transform: uppercase;
 }
 
-.teya-expertise {
-  margin: 44px 0 0;
-  padding: 0;
-  list-style: none;
-  display: flex;
-  gap: 26px;
-  flex-wrap: wrap;
-}
-
-.teya-expertise__item {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.teya-expertise__icon {
-  width: 32px;
-  height: 32px;
-  color: var(--teya-gold);
-}
-
-.teya-expertise__icon svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.teya-expertise__icon svg path,
-.teya-expertise__icon svg circle,
-.teya-expertise__icon svg rect {
-  vector-effect: non-scaling-stroke;
-}
-
-.teya-expertise__label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-}
-
 .teya-hero__visual {
   position: relative;
   display: grid;
@@ -342,14 +313,18 @@ svg {
   align-self: stretch;
   display: flex;
   justify-content: center;
+  min-height: 100%;
 }
 
 .teya-hero__pattern-image {
   width: 100%;
-  height: auto;
-  min-height: 540px;
+  height: 100%;
   object-fit: cover;
   border-radius: 20px;
+}
+
+.teya-hero__pattern-image--mobile {
+  display: none;
 }
 
 .teya-section {
@@ -438,6 +413,10 @@ svg {
 
 .teya-service-card__asset--flower {
   width: 78px;
+}
+
+.teya-service-card__asset--sparkle {
+  width: 84px;
 }
 
 .teya-service-card__title {
@@ -535,10 +514,19 @@ svg {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 56px;
-  background:
-    linear-gradient(180deg, rgba(19, 63, 52, 0), rgba(19, 63, 52, 0.1)),
-    url("/patterns/mosaic-horizontal.png") center / cover no-repeat;
+  height: 92px;
+  background-image:
+    linear-gradient(180deg, rgba(19, 63, 52, 0), rgba(19, 63, 52, 0.12)),
+    url("/patterns/mosaic-horizontal.png");
+  background-position:
+    center,
+    left bottom;
+  background-size:
+    100% 100%,
+    auto 100%;
+  background-repeat:
+    no-repeat,
+    repeat-x;
 }
 
 .teya-footer__grid {
@@ -567,14 +555,6 @@ svg {
 .teya-footer__logo {
   width: 190px;
   height: auto;
-}
-
-.teya-footer__tagline {
-  margin: 18px 0 0;
-  font-size: 0.78rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: var(--teya-text-soft);
 }
 
 .teya-footer__title {
@@ -803,6 +783,152 @@ svg {
   border-color: rgba(202, 154, 61, 0.52);
 }
 
+.teya-mobile-toolbar__cta {
+  width: auto;
+  min-height: 48px;
+  padding: 0 16px;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.teya-mobile-toolbar__menu {
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid rgba(202, 154, 61, 0.3);
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 252, 247, 0.95);
+  color: var(--teya-text);
+  box-shadow: 0 18px 34px rgba(21, 63, 52, 0.08);
+  cursor: pointer;
+}
+
+.teya-mobile-toolbar__menu:hover {
+  border-color: rgba(202, 154, 61, 0.52);
+  color: var(--teya-gold);
+}
+
+.teya-mobile-toolbar__menu-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.teya-mobile-toolbar__menu-icon {
+  width: 18px;
+  display: grid;
+  gap: 4px;
+}
+
+.teya-mobile-toolbar__menu-icon span {
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.teya-mobile-toolbar__menu--open .teya-mobile-toolbar__menu-icon span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.teya-mobile-toolbar__menu--open .teya-mobile-toolbar__menu-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.teya-mobile-toolbar__menu--open .teya-mobile-toolbar__menu-icon span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.teya-mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  justify-content: flex-end;
+  padding: 96px 18px 24px;
+  background: rgba(8, 22, 18, 0.32);
+  backdrop-filter: blur(8px);
+}
+
+.teya-mobile-nav__panel {
+  width: min(320px, calc(100vw - 36px));
+  height: fit-content;
+  padding: 26px 22px 22px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 245, 236, 0.96));
+  border: 1px solid rgba(202, 154, 61, 0.18);
+  box-shadow: 0 30px 68px rgba(21, 63, 52, 0.14);
+}
+
+.teya-mobile-nav__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.teya-mobile-nav__eyebrow {
+  margin: 0;
+  color: var(--teya-gold);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.teya-mobile-nav__close {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(21, 63, 52, 0.06);
+  cursor: pointer;
+}
+
+.teya-mobile-nav__close span {
+  position: absolute;
+  top: 20px;
+  left: 11px;
+  width: 20px;
+  height: 2px;
+  background: var(--teya-forest);
+}
+
+.teya-mobile-nav__close span:first-child {
+  transform: rotate(45deg);
+}
+
+.teya-mobile-nav__close span:last-child {
+  transform: rotate(-45deg);
+}
+
+.teya-mobile-nav__links {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.teya-mobile-nav__links a {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(21, 63, 52, 0.04);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.teya-mobile-nav__links a:hover {
+  background: rgba(202, 154, 61, 0.08);
+  color: var(--teya-gold);
+}
+
 .teya-legal {
   min-height: 100vh;
   padding: 48px 24px;
@@ -853,14 +979,21 @@ svg {
 
 @media (max-width: 1100px) {
   .teya-header__inner {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    padding: 20px 0;
+    min-height: 88px;
+    grid-template-columns: auto 1fr;
     gap: 18px;
   }
 
+  .teya-nav,
   .teya-header__cta {
-    width: 100%;
+    display: none;
+  }
+
+  .teya-mobile-toolbar {
+    display: inline-flex;
+    justify-self: end;
+    align-items: center;
+    gap: 12px;
   }
 
   .teya-hero__grid,
@@ -915,14 +1048,14 @@ svg {
     justify-content: stretch;
   }
 
-  .teya-hero__pattern-image {
-    min-height: 180px;
-    max-height: 220px;
-    object-fit: cover;
+  .teya-hero__pattern-image--desktop {
+    display: none;
   }
 
-  .teya-expertise {
-    gap: 20px 24px;
+  .teya-hero__pattern-image--mobile {
+    display: block;
+    height: auto;
+    max-height: 156px;
   }
 
   .teya-gallery {
@@ -956,36 +1089,37 @@ svg {
     letter-spacing: 0.06em;
   }
 
-  .teya-nav {
-    gap: 10px 14px;
+  .teya-header__inner {
+    gap: 12px;
   }
 
-  .teya-nav__link {
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
+  .teya-logo {
+    width: 118px;
+  }
+
+  .teya-mobile-toolbar {
+    gap: 8px;
   }
 
   .teya-button {
     width: 100%;
   }
 
+  .teya-mobile-toolbar__cta,
+  .teya-mobile-toolbar__menu {
+    width: auto;
+  }
+
+  .teya-mobile-toolbar__menu {
+    padding: 0 14px;
+  }
+
+  .teya-mobile-toolbar__menu-label {
+    display: none;
+  }
+
   .teya-hero__subtitle {
     letter-spacing: 0.24em;
-  }
-
-  .teya-expertise {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .teya-expertise__item {
-    align-items: center;
-    text-align: center;
-  }
-
-  .teya-expertise__label {
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
   }
 
   .teya-gallery {
