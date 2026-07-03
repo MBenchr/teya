@@ -118,7 +118,7 @@ svg {
 }
 
 .teya-header__inner {
-  min-height: 108px;
+  min-height: 98px;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -136,6 +136,10 @@ svg {
 .teya-logo {
   width: 146px;
   height: auto;
+}
+
+.teya-header__cta {
+  min-width: 236px;
 }
 
 .teya-nav {
@@ -200,13 +204,14 @@ svg {
 }
 
 .teya-button--ornament {
-  gap: 12px;
+  gap: 14px;
+  padding-right: 18px;
 }
 
 .teya-button--ornament::after {
   content: "";
-  width: 18px;
-  height: 10px;
+  width: 22px;
+  height: 12px;
   flex: 0 0 auto;
   background: url("/icons/sunburst.png") center / contain no-repeat;
 }
@@ -234,18 +239,18 @@ svg {
 }
 
 .teya-hero {
-  padding: 46px 0 64px;
+  padding: 14px 0 28px;
 }
 
 .teya-hero__grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(420px, 610px);
-  align-items: center;
-  gap: 56px;
+  align-items: start;
+  gap: 48px;
 }
 
 .teya-hero__copy {
-  padding: 24px 0 12px;
+  padding: 4px 0 0;
   max-width: 31rem;
 }
 
@@ -289,9 +294,9 @@ svg {
 .teya-hero__visual {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 108px;
-  align-items: end;
-  gap: 34px;
+  grid-template-columns: minmax(0, 1fr) 112px;
+  align-items: start;
+  gap: 24px;
 }
 
 .teya-hero__frame {
@@ -310,25 +315,27 @@ svg {
 }
 
 .teya-hero__pattern {
+  position: relative;
   align-self: stretch;
-  display: flex;
-  justify-content: center;
   min-height: 100%;
-}
-
-.teya-hero__pattern-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  overflow: hidden;
   border-radius: 20px;
 }
 
-.teya-hero__pattern-image--mobile {
-  display: none;
+.teya-hero__pattern::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/patterns/mosaic-vertical-strip-original.png") center / cover no-repeat;
 }
 
 .teya-section {
-  padding: 84px 0;
+  padding: 76px 0;
+}
+
+.teya-section--services {
+  padding-top: 54px;
+  border-top: 1px solid rgba(202, 154, 61, 0.14);
 }
 
 .teya-section__heading {
@@ -416,7 +423,7 @@ svg {
 }
 
 .teya-service-card__asset--sparkle {
-  width: 84px;
+  width: 66px;
 }
 
 .teya-service-card__title {
@@ -448,14 +455,20 @@ svg {
 }
 
 .teya-about__image-wrap {
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.72);
   overflow: hidden;
-  border-radius: var(--teya-radius-xl);
+  border-radius: 38px;
   box-shadow: var(--teya-shadow);
 }
 
 .teya-about__image {
   width: 100%;
   height: auto;
+  aspect-ratio: 1366 / 768;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 26px;
 }
 
 .teya-about__copy {
@@ -502,8 +515,8 @@ svg {
 
 .teya-footer {
   position: relative;
-  margin-top: 40px;
-  padding: 58px 0 102px;
+  margin-top: 28px;
+  padding: 58px 0 78px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 242, 233, 0.96));
   border-top: 1px solid rgba(202, 154, 61, 0.16);
 }
@@ -514,19 +527,8 @@ svg {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 92px;
-  background-image:
-    linear-gradient(180deg, rgba(19, 63, 52, 0), rgba(19, 63, 52, 0.12)),
-    url("/patterns/mosaic-horizontal.png");
-  background-position:
-    center,
-    left bottom;
-  background-size:
-    100% 100%,
-    auto 100%;
-  background-repeat:
-    no-repeat,
-    repeat-x;
+  height: 62px;
+  background: url("/patterns/mosaic-horizontal-strip.png") left bottom / auto 100% repeat-x;
 }
 
 .teya-footer__grid {
@@ -658,15 +660,21 @@ svg {
 }
 
 .teya-footer__bottom {
+  position: relative;
+  z-index: 1;
+  margin-top: 36px;
+  background: var(--teya-forest);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.teya-footer__bottom-inner {
   width: min(1180px, calc(100% - 48px));
-  margin: 42px auto 0;
-  padding-top: 22px;
-  border-top: 1px solid rgba(202, 154, 61, 0.18);
+  margin: 0 auto;
+  min-height: 46px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  color: var(--teya-text-soft);
   font-size: 0.82rem;
 }
 
@@ -678,6 +686,10 @@ svg {
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
+}
+
+.teya-footer__legal a {
+  color: inherit;
 }
 
 .teya-footer__legal a:hover {
@@ -979,7 +991,7 @@ svg {
 
 @media (max-width: 1100px) {
   .teya-header__inner {
-    min-height: 88px;
+    min-height: 84px;
     grid-template-columns: auto 1fr;
     gap: 18px;
   }
@@ -1003,7 +1015,7 @@ svg {
   }
 
   .teya-hero__visual {
-    grid-template-columns: 1fr 96px;
+    grid-template-columns: minmax(0, 1fr) 96px;
   }
 
   .teya-services-grid {
@@ -1027,12 +1039,13 @@ svg {
 @media (max-width: 768px) {
   .teya-header__inner,
   .teya-section__inner,
-  .teya-footer__bottom {
+  .teya-footer__bottom-inner {
     width: min(100% - 28px, 1180px);
   }
 
   .teya-hero {
-    padding-top: 26px;
+    padding-top: 6px;
+    padding-bottom: 18px;
   }
 
   .teya-hero__title {
@@ -1040,22 +1053,21 @@ svg {
   }
 
   .teya-hero__visual {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: minmax(0, 1fr) 72px;
+    gap: 12px;
   }
 
   .teya-hero__pattern {
-    justify-content: stretch;
+    border-radius: 16px;
   }
 
-  .teya-hero__pattern-image--desktop {
-    display: none;
-  }
-
-  .teya-hero__pattern-image--mobile {
-    display: block;
-    height: auto;
-    max-height: 156px;
+  .teya-hero__pattern::before {
+    inset: 0 auto auto calc(50% + 50px);
+    width: 1000px;
+    height: 100px;
+    background: url("/patterns/mosaic-horizontal-strip.png") center / 100% 100% no-repeat;
+    transform-origin: top left;
+    transform: rotate(90deg);
   }
 
   .teya-gallery {
@@ -1063,12 +1075,14 @@ svg {
   }
 
   .teya-footer {
-    padding-bottom: 116px;
+    padding-bottom: 62px;
   }
 
-  .teya-footer__bottom {
+  .teya-footer__bottom-inner {
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
+    padding: 12px 0;
   }
 
   .teya-footer__legal {
@@ -1120,6 +1134,11 @@ svg {
 
   .teya-hero__subtitle {
     letter-spacing: 0.24em;
+  }
+
+  .teya-hero__visual {
+    grid-template-columns: minmax(0, 1fr) 62px;
+    gap: 10px;
   }
 
   .teya-gallery {

@@ -46,7 +46,7 @@ export default function MobileToolbar({
   return (
     <div className="teya-mobile-toolbar">
       <ContactDialog
-        buttonClassName="teya-button teya-button--solid teya-mobile-toolbar__cta"
+        buttonClassName="teya-button teya-button--solid teya-button--ornament teya-mobile-toolbar__cta"
         buttonLabel="Prendre rendez-vous"
         mailtoHref={mailtoHref}
         telHref={telHref}

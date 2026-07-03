@@ -86,9 +86,9 @@ const serviceIconMap = {
       alt=""
       aria-hidden="true"
       className="teya-service-card__asset teya-service-card__asset--sparkle"
-      height={88}
+      height={70}
       src="/icons/sparkle.png"
-      width={84}
+      width={66}
     />
   ),
 } as const;
@@ -154,7 +154,7 @@ export default function Home() {
             </nav>
 
             <ContactDialog
-              buttonClassName="teya-button teya-button--solid teya-header__cta"
+              buttonClassName="teya-button teya-button--solid teya-button--ornament teya-header__cta"
               buttonLabel="Prendre rendez-vous"
               mailtoHref={contactLinks.mailtoHref}
               telHref={contactLinks.telHref}
@@ -203,22 +203,7 @@ export default function Home() {
                   width={1080}
                 />
               </div>
-              <div aria-hidden="true" className="teya-hero__pattern">
-                <Image
-                  alt=""
-                  className="teya-hero__pattern-image teya-hero__pattern-image--desktop"
-                  height={1920}
-                  src="/patterns/mosaic-vertical-strip.png"
-                  width={1080}
-                />
-                <Image
-                  alt=""
-                  className="teya-hero__pattern-image teya-hero__pattern-image--mobile"
-                  height={1080}
-                  src="/patterns/mosaic-horizontal.png"
-                  width={1920}
-                />
-              </div>
+              <div aria-hidden="true" className="teya-hero__pattern" />
             </div>
           </div>
         </section>
@@ -393,10 +378,12 @@ export default function Home() {
           </div>
 
           <div className="teya-footer__bottom">
-            <p>© 2026 TEYA Beauty - Tous droits réservés</p>
-            <div className="teya-footer__legal">
-              <Link href="/mentions-legales">Mentions légales</Link>
-              <Link href="/politique-confidentialite">Politique de confidentialité</Link>
+            <div className="teya-footer__bottom-inner">
+              <p>© 2026 TEYA Beauty - Tous droits réservés</p>
+              <div className="teya-footer__legal">
+                <Link href="/mentions-legales">Mentions légales</Link>
+                <Link href="/politique-confidentialite">Politique de confidentialité</Link>
+              </div>
             </div>
           </div>
         </footer>
