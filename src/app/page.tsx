@@ -86,9 +86,9 @@ const serviceIconMap = {
       alt=""
       aria-hidden="true"
       className="teya-service-card__asset teya-service-card__asset--sparkle"
-      height={70}
+      height={60}
       src="/icons/sparkle.png"
-      width={66}
+      width={56}
     />
   ),
 } as const;

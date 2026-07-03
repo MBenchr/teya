@@ -294,9 +294,9 @@ svg {
 .teya-hero__visual {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 112px;
+  grid-template-columns: minmax(0, 1fr) 88px;
   align-items: start;
-  gap: 24px;
+  gap: 20px;
 }
 
 .teya-hero__frame {
@@ -316,8 +316,9 @@ svg {
 
 .teya-hero__pattern {
   position: relative;
-  align-self: stretch;
-  min-height: 100%;
+  align-self: start;
+  aspect-ratio: 1 / 10;
+  min-height: 0;
   overflow: hidden;
   border-radius: 20px;
 }
@@ -326,7 +327,7 @@ svg {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("/patterns/mosaic-vertical-strip-original.png") center / cover no-repeat;
+  background: url("/patterns/mosaic-vertical-strip-original.png") center top / 100% 100% no-repeat;
 }
 
 .teya-section {
@@ -423,7 +424,7 @@ svg {
 }
 
 .teya-service-card__asset--sparkle {
-  width: 66px;
+  width: 56px;
 }
 
 .teya-service-card__title {
@@ -1015,7 +1016,7 @@ svg {
   }
 
   .teya-hero__visual {
-    grid-template-columns: minmax(0, 1fr) 96px;
+    grid-template-columns: minmax(0, 1fr) 76px;
   }
 
   .teya-services-grid {
@@ -1053,8 +1054,8 @@ svg {
   }
 
   .teya-hero__visual {
-    grid-template-columns: minmax(0, 1fr) 72px;
-    gap: 12px;
+    grid-template-columns: minmax(0, 1fr) 58px;
+    gap: 10px;
   }
 
   .teya-hero__pattern {
@@ -1137,8 +1138,8 @@ svg {
   }
 
   .teya-hero__visual {
-    grid-template-columns: minmax(0, 1fr) 62px;
-    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) 52px;
+    gap: 8px;
   }
 
   .teya-gallery {
